@@ -1,0 +1,42 @@
+<!--使用v-model实现双向绑定-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+<div id="app5">
+<!--    输入框-->
+    <input v-model="message" placeholder="edit me" />
+    <p> message is ：{{message}}</p>
+<!--多行输入框-->
+    <textarea v-model="multilineText"></textarea>
+    <p>multilineText is:{{multilineText}}</p>
+<!--    复选框-->
+    孙寒华：<input type="checkbox" id="sun" value="孙寒华" v-model="checkbox" />
+    曹操：<input type="checkbox" id="cao" value="曹操" v-model="checkbox"/>
+    神荀彧：<input type="checkbox" id="xun" value="神荀彧" v-model="checkbox"/>
+    <p>checkbox:  {{checkbox}}</p>
+<!--    选择器-->
+    <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <p>select is:{{selected}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app5",
+        data: {"message": '',"multilineText": '',
+            "checkbox": [],
+            // []代表一个数组,因为checkbox需要生成一个数组,有点神奇
+            "selected": ''
+        }
+    })
+</script>
+</body>
+</html>
