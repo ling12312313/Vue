@@ -1,0 +1,17 @@
+{
+  "beijing": {
+    "city": "北京",
+    "temp": "10",
+    "weather": "晴"
+  },
+  "shanghai": {
+    "city": "上海",
+    "temp": "20",
+    "weather": "多云"
+  },
+  "guangzhou": {
+    "city": "广州",
+    "temp": "30",
+    "weather": "阴"
+  }
+}

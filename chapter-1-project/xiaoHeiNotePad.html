@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<!--    小黑记事本-->
+<div id="notePad">
+    <input type="text" v-model="text" @keyup.enter="add" autofocus="autofocus">
+    <ul v-for="(item,index) in list">
+        <ul >{{index+1}} {{item}}
+            <button @click="delete(index)">删除</button>
+        </ul>
+    </ul>
+    <div>
+        {{list.length}} items
+        <button @click="clear">清空</button>
+
+    </div>
+</div>
+</body>
+<script>
+    var vm =new Vue({
+        el: "#notePad",
+        data: {
+            list: ["a","b","c"],
+            text: ""},
+        methods: {
+            add: function () {
+                this.list.push(this.text)
+            },
+            delete: function () {
+                this.list.splice(index,1);
+            }
+
+            ,clear: function () {
+                this.list = [];
+            }
+        }
+
+    });
+</script>
+</html>

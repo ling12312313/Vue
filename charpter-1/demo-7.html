@@ -1,0 +1,63 @@
+<!--axios 异步网络服务,需要js6.0以上-->
+<!--mounted 钩子函数-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--解决闪烁问题-->
+<style>
+    [v-clock]{
+        display: none;
+    }
+</style>
+
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<div id="app7">
+  <div>
+      <h1>{{info.name}}</h1>
+      <p>{{info.url}}</p>
+      <p>{{info.page}}</p>
+      <p>{{info.isNonProfit}}</p>
+      <p>{{info.address.street}}</p>
+      <p>{{info.address.city}}</p>
+      <p>{{info.address.country}}</p>
+  </div>
+<!--    url以以及被""包裹的数据需要绑定才能获取，例如-->
+    <div>
+        <a v-bind:href="info.url">点击我</a>
+    </div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app7",
+        data(){
+            return{
+                info:{
+                    name: null,
+                    url: null,
+                    page: null,
+                    isNonProfit: null,
+                    address: {
+                        street: null,
+                        city: null,
+                        country: null
+                    }
+            }
+        }
+        },
+        // 钩子函数，链式编程，ES6新特性，
+        mounted(){
+           axios.get("../data.json").then(reponse=>(this.info=reponse.data));
+        }
+    });
+// 通过钩子函数获取数据，再通过data给js模型添加数据，然后传递给前端
+</script>
+
+</body>
+</html>

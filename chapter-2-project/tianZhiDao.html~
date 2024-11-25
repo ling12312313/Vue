@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<div id="app1">
+      <p><input type="text" v-model="tianQi" v-on:keyup.enter="getTianQi"></p>
+<!--     <div v-if="tianQi!=null">-->
+<!--      <ul   v-for="item in tianQi">-->
+<!--          <li>{{item.city}} {{item.temp}} {{item.weather}}</li>-->
+<!--      </ul>-->
+<!--     </div>-->
+
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app1",
+        data: {
+           tianQi: {
+               city: "",
+               temp: "",
+               weather: ""
+           }
+        },
+        methods: {
+            getTianQi: function (){
+                axios.get("tianQi.json").then(reponse=>(this.tianQi=reponse.data))
+                }
+        }
+    });
+</script>
+</body>
+</html>

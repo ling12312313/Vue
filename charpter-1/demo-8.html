@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<div id="app8">
+    <p>fun1: {{fun1()}}</p>
+    <p>fun2: {{fun2}}</p>
+</div>
+<script>
+    var vm  = new Vue({
+        el: "#app8",
+            message: "hello,vue",
+        methods:{
+            fun1: function (event){
+                return Date.now();
+            }
+        },
+        //计算属性，将计算结果直接保存为属性，不需要调用方法，且为存在缓存中，
+        // 具有动态刷新的特性
+        computed:{
+            fun2: function (event){
+                this.message ="hello,vue2";
+                // 当数值刷新时，其值也会改变，动态更新数据
+                return Date.now();
+            }
+        }
+
+    })
+</script>
+
+</body>
+</html>
